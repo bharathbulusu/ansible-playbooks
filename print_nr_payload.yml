@@ -1,0 +1,11 @@
+yaml
+Copy code
+---
+- name: Print New Relic payload
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Print the entire payload
+      debug:
+        var: payload
