@@ -4,3 +4,7 @@
     - name: Hello Message
       debug:
         msg: "Hello Ansible, Thanks for working!"
+
+   - name: Print the entire extra_vars
+      debug:
+        var: extra_vars
