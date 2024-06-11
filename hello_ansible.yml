@@ -7,4 +7,4 @@
 
    - name: Print the entire extra_vars
       debug:
-        var: extra_vars
+        var: {{extra_vars}}
