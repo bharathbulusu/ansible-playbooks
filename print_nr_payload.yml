@@ -1,5 +1,3 @@
-yaml
-Copy code
 ---
 - name: Print New Relic payload
   hosts: localhost
