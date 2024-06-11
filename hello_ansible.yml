@@ -5,7 +5,7 @@
       debug:
         msg: "Hello Ansible, Thanks for working!"
 
-   - name: Print the entire extra_vars
+    - name: Print the entire extra_vars
       debug:
         var: extra_vars
         #var: ignored_fields
