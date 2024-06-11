@@ -7,6 +7,7 @@
 
     - name: Print the entire extra_vars
       debug:
-        var: vars
+        var: payload
+        #var: vars
         #var: extra_vars
         #var: ignored_fields
