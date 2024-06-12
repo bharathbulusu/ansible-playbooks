@@ -1,0 +1,8 @@
+- name: BigPanda Action Module Test
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Print all variables
+      debug:
+        msg: "{{ lookup('vars', item) }}"
+      loop: "{{ ['environment_id', 'api_token', 'incident_id', 'tag_id', 'tag_value'] }}"
