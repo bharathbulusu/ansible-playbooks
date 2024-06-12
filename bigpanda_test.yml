@@ -1,0 +1,10 @@
+- name: BigPanda Action Module Test
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Add Comment to Incident
+      bigpanda.incident.comment:
+        incident_id: "{{ incident_id }}"
+        comment: "This is a test from the Ansible collection triggered by Bharat B {{incident_id}}"
+        api_token: "{{ api_token }}"
+        environment_id: "{{ environment_id }}"
