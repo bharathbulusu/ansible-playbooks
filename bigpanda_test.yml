@@ -4,7 +4,7 @@
   tasks:
     - name: Add Comment to Incident
       bigpanda.incident.comment:
-        incident_id: "{{ incident_id }}"
+        incident_id: {{incident_id }}
         comment: "This is a test from the Ansible collection triggered by Bharat B"
-        api_token: "{{ api_token }}"
-        environment_id: "{{ environment_id }}"
+        api_token: {{ api_token }}
+        environment_id: {{ environment_id }}
