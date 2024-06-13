@@ -1,0 +1,17 @@
+- name: Create INC Test
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: New  incident
+      servicenow.itsm.incident:
+        instance:
+          host: https://dev196612.service-now.com
+          username: {{uname}}
+          password: {{pwd}}
+        state: new
+          #caller: David Miller
+        caller: Ansible_Testing
+        short_description: Bharat created this test INC
+        impact: low
+        urgency: low
+
