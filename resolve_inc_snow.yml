@@ -1,0 +1,15 @@
+
+- name: Close INC Test
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Close incident
+      servicenow.itsm.incident:
+        instance:
+          host: https://dev196612.service-now.com
+          username: admin
+          password: "{{pwd}}"
+        state: resolved
+        number: "{{inc}}"
+        close_code: Duplicate
+        close_notes: "Closed"
