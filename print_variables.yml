@@ -6,4 +6,4 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: hostvars[inventory_hostname]
+        var: hostvars
