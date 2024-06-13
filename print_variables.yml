@@ -1,8 +1,9 @@
-- name: BigPanda Action Module Test
+---
+- name: Print New Relic payload
   hosts: localhost
-  connection: local
+  gather_facts: no
+
   tasks:
-    - name: Print all variables
+    - name: Print the entire payload
       debug:
-        msg: "{{ lookup('vars', item) }}"
-      loop: "{{ ['environment_id', 'api_token', 'incident_id', 'tag_id', 'tag_value'] }}"
+        var: incident
