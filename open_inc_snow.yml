@@ -6,8 +6,8 @@
       servicenow.itsm.incident:
         instance:
           host: https://dev196612.service-now.com
-          username: {{uname}}
-          password: {{pwd}}
+          username: "{{uname}}"
+          password: "{{pwd}}"
         state: new
           #caller: David Miller
         caller: Ansible_Testing
