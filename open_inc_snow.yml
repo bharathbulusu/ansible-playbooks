@@ -7,7 +7,7 @@
         instance:
           host: https://dev196612.service-now.com
           username: "{{uname}}"
-          password: "{{snow_pwd}}"
+          password: "{{pwd}}"
         state: new
           #caller: David Miller
         caller: Ansible_Testing
