@@ -2,10 +2,8 @@
 - name: Print New Relic payload
   hosts: localhost
   gather_facts: no
-  vars:
-    incident: {}
 
   tasks:
     - name: Print the entire payload
       debug:
-        var: incident 
+        var: {{incident}} 
