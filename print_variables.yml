@@ -1,9 +1,17 @@
 ---
-- name: Print New Relic payload
+- name: Process and Print Incident Payload
   hosts: localhost
-  gather_facts: no
-
+  gather_facts: false
   tasks:
-    - name: Print the entire payload
+    - name: Ensure WEBHOOK_PAYLOAD environment variable is present
+      fail:
+        msg: "WEBHOOK_PAYLOAD is not set or is empty"
+      when: lookup('env', 'WEBHOOK_PAYLOAD') == ""
+
+    - name: Set incident payload fact from WEBHOOK_PAYLOAD
+      set_fact:
+        incident_payload: "{{ lookup('env', 'WEBHOOK_PAYLOAD') | from_json }}"
+
+    - name: Print the entire incident payload
       debug:
-        var: incident_payload.incident.active
+        var: incident_payload
