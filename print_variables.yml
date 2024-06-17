@@ -6,5 +6,5 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: incident{"id"}
+        var: incident{id}
          
