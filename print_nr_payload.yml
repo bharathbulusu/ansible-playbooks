@@ -9,6 +9,6 @@
        # var: payload
         msg: |
                   {
-            "id": "{{ json_issueId }}",
-            "issueUrl": "{{ json_issuePageUrl }}"
+            "{{ json_issueId }}",
+            "{{ json_issuePageUrl }}"
           }
