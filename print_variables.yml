@@ -1,17 +1,15 @@
 ---
-- name: Process Incident Payload from BigPanda
+- name: Process and Print Incident Payload
   hosts: localhost
   tasks:
-    - name: Ensure WEBHOOK_PAYLOAD is set
+    - name: Ensure WEBHOOK_PAYLOAD environment variable is present
       fail:
         msg: "WEBHOOK_PAYLOAD is not set or is empty"
-      when: webhook_payload is undefined or webhook_payload == ""
+      when: ansible_env.WEBHOOK_PAYLOAD is not defined or ansible_env.WEBHOOK_PAYLOAD == ""
 
-    - name: Extract incident payload
+    - name: Set incident payload fact from WEBHOOK_PAYLOAD
       set_fact:
-        incident_payload: "{{ webhook_payload | from_json }}"
-      vars:
-        webhook_payload: "{{ lookup('env', 'WEBHOOK_PAYLOAD') }}"
+        incident_payload: "{{ lookup('env', 'WEBHOOK_PAYLOAD') | from_json }}"
 
     - name: Print the entire incident payload
       debug:
