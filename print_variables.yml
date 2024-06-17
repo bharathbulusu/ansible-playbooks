@@ -6,4 +6,4 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: incident
+        var: status
