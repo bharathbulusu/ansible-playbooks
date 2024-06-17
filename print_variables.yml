@@ -1,74 +1,9 @@
 ---
-- name: Process and Print Incident Payload
+- name: Print New Relic payload
   hosts: localhost
+  gather_facts: no
+
   tasks:
-    - name: Ensure WEBHOOK_PAYLOAD environment variable is present
-      fail:
-        msg: "WEBHOOK_PAYLOAD is not set or is empty"
-      when: ansible_env.WEBHOOK_PAYLOAD is not defined or ansible_env.WEBHOOK_PAYLOAD == ""
-
-    - name: Set incident payload fact from WEBHOOK_PAYLOAD
-      set_fact:
-        incident_payload: "{{ lookup('env', 'WEBHOOK_PAYLOAD') | from_json }}"
-
-    - name: Print the entire incident payload
+    - name: Print the entire payload
       debug:
         var: incident_payload
-
-    - name: Extract incident details
-      set_fact:
-        incident_id: "{{ incident_payload.incident.id }}"
-        status: "{{ incident_payload.incident.status }}"
-        active: "{{ incident_payload.incident.active }}"
-        severity: "{{ incident_payload.incident.severity }}"
-        flapping: "{{ incident_payload.incident.flapping }}"
-        resolved: "{{ incident_payload.incident.resolved }}"
-        snoozed: "{{ incident_payload.incident.snooze.snoozed }}"
-        started_on: "{{ incident_payload.incident.startedOn }}"
-        changed_on: "{{ incident_payload.incident.changedOn }}"
-        updated_on: "{{ incident_payload.incident.updatedOn }}"
-        ended_on: "{{ incident_payload.incident.endedOn }}"
-        alerts: "{{ incident_payload.incident.alerts }}"
-
-    - name: Print incident details
-      debug:
-        msg: >
-          Incident Details:
-          - ID: {{ incident_id }}
-          - Status: {{ status }}
-          - Active: {{ active }}
-          - Severity: {{ severity }}
-          - Flapping: {{ flapping }}
-          - Resolved: {{ resolved }}
-          - Snoozed: {{ snoozed }}
-          - Started On: {{ started_on }}
-          - Changed On: {{ changed_on }}
-          - Updated On: {{ updated_on }}
-          - Ended On: {{ ended_on }}
-
-    - name: Process each alert
-      debug:
-        msg: |
-          Alert Details:
-          - ID: {{ item.id }}
-          - Status: {{ item.status }}
-          - Started On: {{ item.startedOn }}
-          - Ended On: {{ item.endedOn }}
-          - Changed On: {{ item.changedOn }}
-          - Updated On: {{ item.updatedOn }}
-          - Active: {{ item.active }}
-          - Primary Property: {{ item.primaryProperty }}
-          - Secondary Property: {{ item.secondaryProperty }}
-          - Source System: {{ item.sourceSystem }}
-          - Description: {{ item.description }}
-          - Tags: {{ item.tags }}
-      loop: "{{ alerts }}"
-
-    - name: Extract specific tag values from the first alert
-      set_fact:
-        alert_tags: "{{ alerts[0].tags }}"
-
-    - name: Print alert tags
-      debug:
-        msg: "{{ item.name }}: {{ item.value }}"
-      loop: "{{ alert_tags }}"
