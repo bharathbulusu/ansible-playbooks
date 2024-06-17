@@ -1,10 +1,14 @@
 ---
-- name: Print New Relic payload
+- name: Parse and print the payload
   hosts: localhost
   gather_facts: no
-
+  vars:
+    payload: {}
   tasks:
     - name: Print the entire payload
       debug:
-        var: incident
-         
+        var: payload
+
+    - name: Print the incident ID
+      debug:
+        msg: "{{ payload.incident.id }}"
