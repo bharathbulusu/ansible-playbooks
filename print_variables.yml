@@ -2,13 +2,19 @@
 - name: Parse and print the payload
   hosts: localhost
   gather_facts: no
-  vars:
-    payload: {}
   tasks:
-    - name: Print the entire payload
+    - name: Print all available variables
       debug:
-        var: payload
+        var: vars
 
-    - name: Print the incident ID
+    - name: Print the entire payload if it exists
       debug:
-        msg: "{{ payload.incident.id }}"
+        var: "{{ item }}"
+      loop: "{{ vars | dict2items | selectattr('key', 'match', '^payload') | list }}"
+      when: item.value is defined
+
+    - name: Print the incident ID if it exists
+      debug:
+        msg: "{{ item.value.incident.id }}"
+      loop: "{{ vars | dict2items | selectattr('key', 'match', '^payload') | list }}"
+      when: item.value.incident is defined
