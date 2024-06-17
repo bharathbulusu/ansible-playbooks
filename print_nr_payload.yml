@@ -7,8 +7,4 @@
     - name: Print the entire payload
       debug:
        # var: payload
-        msg: |
-                  {
-            "{{ json_issueId }}",
-            "{{ json_issuePageUrl }}"
-          }
+         var: id
