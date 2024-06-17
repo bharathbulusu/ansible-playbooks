@@ -2,10 +2,17 @@
 - name: Process Incident Payload from BigPanda
   hosts: localhost
   tasks:
+    - name: Ensure WEBHOOK_PAYLOAD is set
+      fail:
+        msg: "WEBHOOK_PAYLOAD is not set or is empty"
+      when: webhook_payload is undefined or webhook_payload == ""
+
     - name: Extract incident payload
       set_fact:
-        incident_payload: "{{ lookup('env', 'WEBHOOK_PAYLOAD') | from_json }}"
-    
+        incident_payload: "{{ webhook_payload | from_json }}"
+      vars:
+        webhook_payload: "{{ lookup('env', 'WEBHOOK_PAYLOAD') }}"
+
     - name: Print the entire incident payload
       debug:
         var: incident_payload
