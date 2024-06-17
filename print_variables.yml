@@ -7,4 +7,4 @@
     - name: Print the entire payload
       debug:
        # var: incident
-        var: incident
+        var: extra_vars
