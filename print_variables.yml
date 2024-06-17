@@ -6,4 +6,22 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: incident
+        #var: incident
+         msg: |
+                  {
+            "id": {{ json_issueId }},
+            "issueUrl": {{ json_issuePageUrl }},
+            "title": {{ json_annotations_title_0 }},
+            "priority": {{ json_priority }},
+            "impactedEntities": {{ json_entitiesData_names }},
+            "totalIncidents": {{ json_totalIncidents }},
+            "state": {{ json_state }},
+            "trigger": {{ json_triggerEvent }},
+            "isCorrelated": {{ json_isCorrelated }},
+            "createdAt": {{ createdAt }},
+            "updatedAt": {{ updatedAt }},
+            "sources": {{ json_accumulations_source }},
+            "alertPolicyNames": {{ json_accumulations_policyName }},
+            "alertConditionNames": {{ json_accumulations_conditionName }},
+            "workflowName": {{ json_workflowName }}
+          }
