@@ -1,20 +1,9 @@
 ---
-- name: Parse and print the payload
+- name: Print New Relic payload
   hosts: localhost
   gather_facts: no
+
   tasks:
-    - name: Print all available variables
+    - name: Print the entire payload
       debug:
-        var: vars
-
-    - name: Print the entire payload if it exists
-      debug:
-        var: "{{ item }}"
-      loop: "{{ vars | dict2items | selectattr('key', 'match', '^payload') | list }}"
-      when: item.value is defined
-
-    - name: Print the incident ID if it exists
-      debug:
-        msg: "{{ item.value.incident.id }}"
-      loop: "{{ vars | dict2items | selectattr('key', 'match', '^payload') | list }}"
-      when: item.value.incident is defined
+        var: incident
