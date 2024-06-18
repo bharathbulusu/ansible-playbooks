@@ -8,5 +8,6 @@
       bigpanda.incident.resolve:
         incident_id: "666bdba3ce5056d96a0c7c2f"
         resolution_comment: "Resolved"
-        api_token:: "BPUAK44abe6c789be95c3552f5dbe78c652e0"
+        api_token: "BPUAK44abe6c789be95c3552f5dbe78c652e0"
+        environment_id: "6578975d1401fd26569fa0f2"
     
