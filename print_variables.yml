@@ -1,6 +1,7 @@
 - name: Print bigpanda payload
   hosts: localhost
   gather_facts: yes
+  validate_cets: false
 
   tasks:
         - name: Resolve Incident
