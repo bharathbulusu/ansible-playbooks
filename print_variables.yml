@@ -1,16 +1,9 @@
-- name: Print bigpanda payload
+---
+- name: Print Bigpanda payload
   hosts: localhost
-  #gather_facts: no
-  connection: local
-
+  gather_facts: no
 
   tasks:
-    - name: Resolve Incident
-      bigpanda.incident.resolve:
-        incident_id: "666beda28accb6d17f012410"
-        resolution_comment: "Resolved"
-        api_token: "BPUAK44abe6c789be95c3552f5dbe78c652e0"
-        environment_id: "6578975d1401fd26569fa0f2"
-          
-             
-      
+    - name: Print the entire payload
+      debug:
+        var: event.payload.incident
