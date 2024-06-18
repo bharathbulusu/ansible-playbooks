@@ -1,9 +1,12 @@
 ---
-- name: Print New Relic payload
+- name: Print bigpanda payload
   hosts: localhost
   gather_facts: no
 
   tasks:
-    - name: Print the entire payload
-      debug:
-        var: bigpanda.incident
+    - name: Resolve Incident
+      bigpanda.incident.resolve:
+         incident_is: bigpanda.incident
+         debug:
+           var: incident_is
+    
