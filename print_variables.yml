@@ -10,4 +10,4 @@
         api_token: "BPUAK44abe6c789be95c3552f5dbe78c652e0"
         environment_id: "6578975d1401fd26569fa0f2"
       environment:
-        REQUESTS_CA_BUNDLE: ""
+        ANSIBLE_HTTPAPI_VERIFY_CERT: "false"
