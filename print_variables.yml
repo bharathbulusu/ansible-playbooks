@@ -6,7 +6,7 @@
   tasks:
     - name: Resolve Incident
       bigpanda.incident.resolve:
-        incident_id: "{{bigpanda.incident}}"
-      debug:
-        var: incident_id
+        incident_id: "666bdba3ce5056d96a0c7c2f"
+        resolution_comment: "Resolved"
+        api_token:: "BPUAK44abe6c789be95c3552f5dbe78c652e0"
     
