@@ -6,7 +6,7 @@
   tasks:
     - name: Resolve Incident
       bigpanda.incident.resolve:
-         incident_is: bigpanda.incident
+         incident_id: "{{bigpanda.incident}}"
          debug:
-           var: incident_is
+           var: incident_id
     
