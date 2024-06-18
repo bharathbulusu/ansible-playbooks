@@ -5,7 +5,7 @@
 
   tasks:
         - name: Resolve Incident
-          validate_certs: false
+          validate_certs: False
           bigpanda.incident.resolve:
             incident_id: "666beda28accb6d17f012410"
             resolution_comment: "Resolved"
