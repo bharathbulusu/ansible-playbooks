@@ -1,21 +1,12 @@
 - name: Print bigpanda payload
   hosts: localhost
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
-    - block:
-        - name: Set REQUESTS_CA_BUNDLE to empty
-          ansible.builtin.set_fact:
-            REQUESTS_CA_BUNDLE: ""
-          changed_when: false
-
         - name: Resolve Incident
           bigpanda.incident.resolve:
-            incident_id: "666bdba3ce5056d96a0c7c2f"
+            incident_id: "666beda28accb6d17f012410"
             resolution_comment: "Resolved"
             api_token: "BPUAK44abe6c789be95c3552f5dbe78c652e0"
             environment_id: "6578975d1401fd26569fa0f2"
-      rescue:
-        - name: Ensure REQUESTS_CA_BUNDLE is set
-          ansible.builtin.set_fact:
-            REQUESTS_CA_BUNDLE: ""
+      
