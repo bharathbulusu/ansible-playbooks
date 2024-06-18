@@ -1,9 +1,11 @@
----
-- name: Print Bigpanda payload
+- name: Print bigpanda payload
   hosts: localhost
-  gather_facts: no
+  #gather_facts: no
+  connection: local
+
 
   tasks:
-    - name: Print the entire payload
+    - name: Resolve Incident
+      bigpanda.incident:
       debug:
-        var: payload.incident
+        var: incident
