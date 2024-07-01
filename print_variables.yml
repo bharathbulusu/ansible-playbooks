@@ -19,6 +19,11 @@
         src: "{{ tempfile.path }}"
       register: payload_content
 
+    - name: Ensure payload content is not empty
+      fail:
+        msg: "Payload content is empty or not correctly captured"
+      when: payload_content.content | length == 0
+
     - name: Print payload
       debug:
         msg: "{{ payload_content.content | b64decode | from_json }}"
