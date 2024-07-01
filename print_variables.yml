@@ -6,4 +6,4 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: ansible_job_template_payload
+        var: incident
