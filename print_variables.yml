@@ -6,7 +6,7 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: payload
+        var: payloads
 
     - name: Print entire env variables 
       debug: 
