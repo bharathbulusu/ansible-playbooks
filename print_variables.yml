@@ -1,14 +1,9 @@
 ---
-- name: BigPanda Action Module Test
+- name: Bigpanda_Print_Payload
   hosts: localhost
-  connection: local
-  gather_facts: false
-  
-  tasks:
-    - name: Add Comment to Incident
-      bigpanda.incident.comment:
-        incident_id: "667a655d253839fc44d511f1"
-        comment: "This is a test from the Ansible collection triggered by Bharat B"
-        api_token: "BPUAK572ddb986606d1a5b51d8e49a5b65447"
-        environment_id: "6678fde848f129c1eb3f7d4b"
+  gather_facts: no
 
+  tasks:
+    - name: Print the entire payload
+      debug:
+        var: payload
