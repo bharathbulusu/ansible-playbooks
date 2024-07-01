@@ -4,4 +4,4 @@
   tasks:
     - name: Print extra_vars
       debug:
-        msg: "Extra Vars: {{ extra_vars }}"
+        msg: "Extra Vars: {{ payload }}"
