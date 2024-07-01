@@ -1,7 +1,9 @@
 ---
-- name: Example playbook to print extra_vars
+- name: Print Bigpanda payload
   hosts: localhost
+  gather_facts: false
+
   tasks:
-    - name: Print extra_vars
+    - name: Print the entire payload
       debug:
-        msg: "Extra Vars: {{ payload }}"
+        var: payload
