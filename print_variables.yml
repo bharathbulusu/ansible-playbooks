@@ -2,10 +2,12 @@
 - name: Print Bigpanda payload
   hosts: localhost
   gather_facts: no
-
+  vars: 
+    payload: "{{ lookup('env', 'PAYLOAD') }}"
   tasks:
     - name: Print the entire payload
       debug:
-        var: payload
+        msg: "{{ payload }}"
+        
 
         
