@@ -1,9 +1,10 @@
 ---
 - name: Print Bigpanda payload
   hosts: localhost
-  gather_facts: false
+  gather_facts: no
 
   tasks:
     - name: Print the entire payload
       debug:
         var: payload
+        
