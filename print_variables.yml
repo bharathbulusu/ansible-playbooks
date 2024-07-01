@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: no
   vars: 
-    payload: "{{ lookup('env', 'PAYLOAD') }}"
+    payload: "{{incident}}"
   tasks:
     - name: Print the entire payload
       debug:
