@@ -6,4 +6,4 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: bigpanda.payload.incident
+        var: bigpanda.incident
