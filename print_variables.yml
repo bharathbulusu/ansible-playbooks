@@ -1,29 +1,9 @@
 ---
-- name: Capture and print payload from stdin
+- name: Bigpanda_Print_Payload
   hosts: localhost
   gather_facts: no
+
   tasks:
-    - name: Create temporary file to store the payload
-      tempfile:
-        state: file
-        suffix: '.json'
-      register: tempfile
-
-    - name: Capture payload from stdin and write to temporary file
-      shell: 'cat > {{ tempfile.path }}'
-      args:
-        stdin: yes
-
-    - name: Read and print the payload
-      slurp:
-        src: "{{ tempfile.path }}"
-      register: payload_content
-
-    - name: Ensure payload content is not empty
-      fail:
-        msg: "Payload content is empty or not correctly captured"
-      when: payload_content.content | length == 0
-
-    - name: Print payload
+    - name: Print the entire payload
       debug:
-        msg: "{{ payload_content.content | b64decode | from_json }}"
+        var: payload
