@@ -7,7 +7,7 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: "{{ payload }}"
+        var: payload
         
 
         
