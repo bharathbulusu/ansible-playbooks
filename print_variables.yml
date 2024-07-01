@@ -6,5 +6,5 @@
   tasks:
     - name: Print the entire payload
       debug:
-        var: incident_id
+        var: ansible_job_kwargs
         
